@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import productApi from "apis/products";
 import { Spinner } from "neetoui";
 import { isNotNil, append } from "ramda";
 
@@ -11,9 +11,7 @@ const Product = () => {
   const [isLoading, setIsLoading] = useState(true);
   const fetchProduct = async () => {
     try {
-      const reponse = await axios.get(
-        "https://smile-cart-backend-staging.neetodeployapp.com/products/infinix-inbook-2"
-      );
+      const reponse = await productApi.show();
       console.log("API reponse:", reponse.data);
       setProduct(reponse.data);
     } catch (error) {
