@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import productApi from "apis/products";
 import { PageNotFound, Header, PageLoader } from "components/commons";
+import AddToCart from "components/commons/AddToCart";
 import { isNotNil, append } from "ramda";
 import { useParams } from "react-router-dom";
 
@@ -52,6 +53,7 @@ const Product = () => {
           <p className="font-semibold text-green-600">
             {discountPercentage}% off
           </p>
+          <AddToCart {...{ slug }} />
         </div>
       </div>
     </div>

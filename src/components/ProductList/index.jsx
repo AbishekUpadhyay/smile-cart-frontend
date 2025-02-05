@@ -5,7 +5,7 @@ import { Header, PageLoader } from "components/commons";
 import useDebounce from "hooks/useDebounce";
 import { Search } from "neetoicons";
 import { Input, NoData } from "neetoui";
-import { isEmpty, without } from "ramda";
+import { isEmpty } from "ramda";
 
 import ProductListItem from "./ProductListItem";
 
@@ -13,7 +13,6 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchKey, setSearchKey] = useState("");
-  const [cartItems, setCartItems] = useState([]);
   const debouncedSearchKey = useDebounce(searchKey);
   const fetchProducts = async () => {
     try {
@@ -28,14 +27,6 @@ const ProductList = () => {
     }
   };
 
-  const toggelIsInCart = slug => {
-    setCartItems(prevCartItems =>
-      prevCartItems.includes(slug)
-        ? without([slug], prevCartItems)
-        : [slug, ...prevCartItems]
-    );
-  };
-
   useEffect(() => {
     fetchProducts();
   }, [debouncedSearchKey]);
@@ -44,7 +35,6 @@ const ProductList = () => {
   return (
     <div className="flex flex-col">
       <Header
-        cartItemsCount={cartItems.length}
         shouldShowBackButton={false}
         title="Smile Cart"
         actionBlock={
@@ -62,12 +52,7 @@ const ProductList = () => {
       ) : (
         <div className="grid grid-cols-2 justify-items-center gap-y-8 p-4 md:grid-cols-3 lg:grid-cols-4">
           {products.map(product => (
-            <ProductListItem
-              isInCart={cartItems.includes(product.slug)}
-              key={product.slug}
-              toggleIsInCart={() => toggelIsInCart(product.slug)}
-              {...product}
-            />
+            <ProductListItem key={product.slug} {...product} />
           ))}
         </div>
       )}
