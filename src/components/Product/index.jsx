@@ -31,7 +31,15 @@ const Product = () => {
   if (isLoading) return <PageLoader />;
 
   if (isError) return <PageNotFound />;
-  const { name, description, mrp, offerPrice, imageUrl, imageUrls } = product;
+  const {
+    name,
+    description,
+    mrp,
+    offerPrice,
+    imageUrl,
+    imageUrls,
+    availableQuantity,
+  } = product;
   const totalDiscount = mrp - offerPrice;
   const discountPercentage = ((totalDiscount / mrp) * 100).toFixed(1);
 
@@ -53,7 +61,7 @@ const Product = () => {
           <p className="font-semibold text-green-600">
             {discountPercentage}% off
           </p>
-          <AddToCart {...{ slug }} />
+          <AddToCart {...{ availableQuantity, slug }} />
         </div>
       </div>
     </div>
