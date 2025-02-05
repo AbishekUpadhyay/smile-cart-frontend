@@ -7,6 +7,7 @@ const transformResponseKeysToCamelCase = response => {
   if (response.data) response.data = keysToCamelCase(response.data);
 };
 
+//setting up request interceptor
 const requestInterceptors = () => {
   axios.interceptors.request.use(
     evolve({ data: serializeKeysToSnakeCase, params: serializeKeysToSnakeCase })
