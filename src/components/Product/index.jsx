@@ -6,6 +6,7 @@ import AddToCart from "components/commons/AddToCart";
 import useSelectedQuantity from "components/hooks/useSelectedQuantity";
 import { Button } from "neetoui";
 import { isNotNil, append } from "ramda";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import routes from "routes";
 
@@ -17,6 +18,7 @@ const Product = () => {
   const [isError, setIsError] = useState(false);
   const { slug } = useParams();
   const { selectedQuantity, setSelectedQuantity } = useSelectedQuantity(slug);
+  const { t } = useTranslation();
   const fetchProduct = async () => {
     try {
       const product = await productApi.show(slug);
@@ -60,10 +62,12 @@ const Product = () => {
         </div>
         <div className="w-3/5 space-y-4">
           <p>{description}</p>
-          <p>MRP: ₹{mrp}</p>
-          <p className="font-semibold">Offer price: ₹{offerPrice}</p>
+          <p>{t("productMrp", { mrp })}</p>
+          <p className="font-semibold">
+            {t("productOfferPrice", { offerPrice })}
+          </p>
           <p className="font-semibold text-green-600">
-            {discountPercentage}% off
+            {t("productDiscount", { discountPercentage })}
           </p>
           <div className="flex space-x-10">
             <AddToCart {...{ availableQuantity, slug }} />
