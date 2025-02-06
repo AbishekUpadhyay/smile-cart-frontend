@@ -8,5 +8,10 @@
   "offerPrice": "Total offer price: <span>₹{{offerPrice}}</span>",
   "productMrp": "MRP: ₹{{mrp}}",
   "productOfferPrice": "Offer price: ₹{{offerPrice}}",
-  "productDiscount": "{{discountPercentage}}% off"
+  "productDiscount": "{{discountPercentage}}% off",
+  "title": "Smile Cart",
+  "pageTitle": "{{title}}| Smile Cart",
+  "cart": {
+    "title": "My cart"
+  }
 }
