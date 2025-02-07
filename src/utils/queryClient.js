@@ -22,10 +22,12 @@ persistQueryClient({
   queryClient,
   persistor: localStoragePersistor,
   maxAge: Infinity,
-  dehydrateOptions: ({ queryKey }) =>
-    [QUERY_KEYS.COUNTRIES, QUERY_KEYS.STATES].some(key =>
-      queryKey.includes(key)
-    ),
+  dehydrateOptions: {
+    shouldDehydrateQuery: ({ queryKey }) =>
+      [QUERY_KEYS.COUNTRIES, QUERY_KEYS.STATES].some(key =>
+        queryKey.includes(key)
+      ),
+  },
 });
 
 export default queryClient;
