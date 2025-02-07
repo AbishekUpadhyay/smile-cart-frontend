@@ -55,5 +55,8 @@
   "order": {
     "successfullyPlaced": "Order has been successfully placed"
   },
-  "saveInformationForNextTime": "Save this information for next time"
+  "saveInformationForNextTime": "Save this information for next time",
+  "subtotal": "Subtotal <span>₹{{totalPrice}}</span>",
+  "totalPayablePrice": "Total Payable <span>₹{{totalPrice}}</span>",
+  "deliveryCharges": "Delivery charges <span>FREE</span>"
 }
