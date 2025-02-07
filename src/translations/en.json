@@ -10,7 +10,7 @@
   "productOfferPrice": "Offer price: ₹{{offerPrice}}",
   "productDiscount": "{{discountPercentage}}% off",
   "title": "Smile Cart",
-  "pageTitle": "{{title}}| Smile Cart",
+  "pageTitle": "{{title}}| Smile cart",
   "cart": {
     "title": "My cart"
   }
