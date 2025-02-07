@@ -1,5 +1,8 @@
 import { useFormikContext } from "formik";
-import { useFetchCountries } from "hooks/reactQuery/useCheckoutApi";
+import {
+  useFetchStates,
+  useFetchCountries,
+} from "hooks/reactQuery/useCheckoutApi";
 import { Typography } from "neetoui";
 import { Input, Select } from "neetoui/formik";
 import { useTranslation } from "react-i18next";
@@ -11,11 +14,11 @@ const Form = () => {
     values: { country },
   } = useFormikContext();
   const { data: countries = [] } = useFetchCountries();
-  const { data: states = [] } = useFetchCountries({
+  const { data: states = [] } = useFetchStates({
     countryCode: country.code,
   });
 
-  const handleChangeCountry = () => {
+  const handleChangeCountry = country => {
     setFieldValue("country", country);
     setFieldValue("state", null);
   };
