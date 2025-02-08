@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import AddToCart from "components/commons/AddToCart";
 import { Typography } from "neetoui";
@@ -20,4 +20,4 @@ const ProductListItem = ({ imageUrl, name, offerPrice, slug }) => (
   </Link>
 );
 
-export default ProductListItem;
+export default memo(ProductListItem);
